@@ -1,0 +1,62 @@
+/* Global styles ported from the original Pixelim landing pages.
+   Everything else in the design is expressed as inline styles on each element. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0d0d1a;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-poppins), Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #f472b6;
+  text-decoration: none;
+}
+a:hover {
+  color: #ffffff;
+}
+
+/* Desktop / mobile visibility toggles — the only media-query driven rules. */
+[data-desktop-only] {
+  display: none !important;
+}
+@media (min-width: 1040px) {
+  [data-desktop-only] {
+    display: flex !important;
+  }
+  [data-mobile-only] {
+    display: none !important;
+  }
+}
+
+/* Hover "lift" effects, ported from the original `style-hover` attributes.
+   Base shadows are set inline, so the hover overrides use !important to win. */
+.card-product,
+.card-post,
+.card-benefit,
+.tile-gallery,
+.btn-lift {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card-product:hover {
+  box-shadow: 0 26px 60px rgba(123, 47, 247, 0.16) !important;
+  transform: translateY(-4px);
+}
+.card-post:hover {
+  box-shadow: 0 20px 50px rgba(18, 18, 31, 0.09) !important;
+}
+.card-benefit:hover {
+  box-shadow: 0 20px 46px rgba(123, 47, 247, 0.14) !important;
+  transform: translateY(-3px);
+}
+.tile-gallery:hover {
+  box-shadow: 0 24px 54px rgba(123, 47, 247, 0.18) !important;
+  transform: translateY(-3px);
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
