@@ -22,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body>{children}</body>
+      <body>
+        <noscript>
+          {/* Without JS the reveal observer never runs, so force sections visible. */}
+          <style>{`.page-anim section,.page-anim footer{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

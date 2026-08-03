@@ -3,6 +3,7 @@ import SiteHeader from "@/app/components/SiteHeader";
 import SiteFooter from "@/app/components/SiteFooter";
 import ContactSection from "@/app/components/ContactSection";
 import StickyCta from "@/app/components/StickyCta";
+import ScrollReveal from "@/app/components/ScrollReveal";
 
 const ACRYLIC_ORDER = "/acrylic-photo-prints#order-app";
 
@@ -67,10 +68,12 @@ const HOME_CONTACT_PARA =
 export default function Home() {
   return (
     <div
+      className="page-anim"
       style={css(
         "font-family:var(--font-poppins),Helvetica,Arial,sans-serif;background:#0d0d1a;color:#ffffff;overflow-x:hidden"
       )}
     >
+      <ScrollReveal />
       <SiteHeader active="home" createHref={ACRYLIC_ORDER} />
 
       {/* Hero */}
