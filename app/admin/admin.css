@@ -1,0 +1,6 @@
+/* Tailwind stylesheet scoped to the admin panel.
+   Imported only by app/admin/layout.tsx, so its preflight + utilities load on
+   /admin routes only and never touch the inline-styled public pages. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -16,6 +16,13 @@ const APP_MIN_HEIGHT = "min(700px, max(550px, 62vh))";
 const PRODUCT_CONTACT_PARA =
   "Custom size, tricky wall, or a photo you are unsure about? Send us the details and we will come back with a plan and a price.";
 
+// Pre-selects the contact form's product dropdown to match the page.
+const SERVICE_BY_ACTIVE: Record<string, string> = {
+  acrylic: "acrylic",
+  canvas: "canvas",
+  aluminium: "aluminum",
+};
+
 export default function ProductPage({ product }: { product: Product }) {
   const [option, setOption] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
@@ -796,6 +803,7 @@ export default function ProductPage({ product }: { product: Product }) {
         bgAlt={product.contact.alt}
         para={PRODUCT_CONTACT_PARA}
         uploadHref="#order-app"
+        defaultService={SERVICE_BY_ACTIVE[product.active] ?? ""}
       />
 
       {/* Final CTA */}

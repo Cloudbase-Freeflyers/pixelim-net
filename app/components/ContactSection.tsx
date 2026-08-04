@@ -1,21 +1,81 @@
+"use client";
+
+import { useState } from "react";
 import { css } from "@/app/lib/css";
+
+const FIELD_STYLE =
+  "width:100%;box-sizing:border-box;padding:15px 18px;border-radius:12px;border:1px solid #e2e2ee;background:#ffffff;color:#12121f;font-family:inherit;font-size:15.5px";
+const LABEL_STYLE =
+  "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4;margin-top:6px";
+
+const SERVICE_OPTIONS: { value: string; label: string }[] = [
+  { value: "acrylic", label: "Acrylic Glass Prints" },
+  { value: "canvas", label: "Canvas Prints" },
+  { value: "aluminum", label: "Aluminum Prints" },
+  { value: "other", label: "Something else" },
+];
 
 /**
  * Shared "Contact Us" section. The background image, its alt text, the intro
  * paragraph and the "upload instead" link differ between the home page and the
- * product pages, so they are passed in as props.
+ * product pages, so they are passed in as props. The form submits real leads to
+ * /api/leads (same pipeline as the admin panel consumes).
  */
 export default function ContactSection({
   bgImg,
   bgAlt,
   para,
   uploadHref,
+  defaultService = "",
 }: {
   bgImg: string;
   bgAlt: string;
   para: string;
   uploadHref: string;
+  defaultService?: string;
 }) {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: (fd.get("name") as string)?.trim(),
+      phone: (fd.get("phone") as string)?.trim(),
+      email: (fd.get("email") as string)?.trim(),
+      service: (fd.get("service") as string) || "",
+      message: (fd.get("message") as string)?.trim() || undefined,
+    };
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: "lp_form_submit" });
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -103,103 +163,141 @@ export default function ContactSection({
             We reply within one business day. Sun–Thu, 9:00–18:00 IST.
           </p>
         </div>
-        <form
-          action="mailto:info@pixelim.net"
-          method="post"
-          style={css(
-            "display:grid;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:clamp(22px,3vw,34px);backdrop-filter:blur(10px);box-shadow:0 30px 70px rgba(0,0,0,.4)"
-          )}
-        >
-          <label
-            htmlFor="lead-name"
+
+        {submitted ? (
+          <div
             style={css(
-              "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4"
+              "display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:clamp(32px,4vw,48px);backdrop-filter:blur(10px);box-shadow:0 30px 70px rgba(0,0,0,.4);min-height:320px"
             )}
           >
-            Full name
-          </label>
-          <input
-            id="lead-name"
-            name="name"
-            type="text"
-            placeholder="Jane Cohen"
-            style={css(
-              "width:100%;box-sizing:border-box;padding:15px 18px;border-radius:12px;border:1px solid #e2e2ee;background:#ffffff;color:#12121f;font-family:inherit;font-size:15.5px"
-            )}
-          />
-          <label
-            htmlFor="lead-phone"
-            style={css(
-              "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4;margin-top:6px"
-            )}
-          >
-            Phone number
-          </label>
-          <input
-            id="lead-phone"
-            name="phone"
-            type="tel"
-            placeholder="+1 555 0100"
-            style={css(
-              "width:100%;box-sizing:border-box;padding:15px 18px;border-radius:12px;border:1px solid #e2e2ee;background:#ffffff;color:#12121f;font-family:inherit;font-size:15.5px"
-            )}
-          />
-          <label
-            htmlFor="lead-email"
-            style={css(
-              "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4;margin-top:6px"
-            )}
-          >
-            Email
-          </label>
-          <input
-            id="lead-email"
-            name="email"
-            type="email"
-            placeholder="you@email.com"
-            style={css(
-              "width:100%;box-sizing:border-box;padding:15px 18px;border-radius:12px;border:1px solid #e2e2ee;background:#ffffff;color:#12121f;font-family:inherit;font-size:15.5px"
-            )}
-          />
-          <label
-            htmlFor="lead-message"
-            style={css(
-              "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4;margin-top:6px"
-            )}
-          >
-            Message
-          </label>
-          <textarea
-            id="lead-message"
-            name="message"
-            rows={4}
-            placeholder="Sizes, wall measurements, deadline — anything helps."
-            style={css(
-              "width:100%;box-sizing:border-box;padding:15px 18px;border-radius:12px;border:1px solid #e2e2ee;background:#ffffff;color:#12121f;font-family:inherit;font-size:15.5px;resize:vertical"
-            )}
-          ></textarea>
-          <button
-            type="submit"
-            style={css(
-              "margin-top:10px;padding:16px 30px;border:0;border-radius:999px;background:linear-gradient(135deg,#7b2ff7,#ec4899);color:#ffffff;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 14px 34px rgba(236,72,153,.34)"
-            )}
-          >
-            Submit
-          </button>
-          <p
-            style={css(
-              "margin:4px 0 0;font-size:12.5px;line-height:1.6;color:#9a9ab8"
-            )}
-          >
-            Prefer to just start?{" "}
-            <a
-              href={uploadHref}
-              style={css("color:#f472b6;font-weight:600")}
+            <span
+              style={css(
+                "width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#ec4899);display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;box-shadow:0 14px 34px rgba(236,72,153,.4)"
+              )}
             >
-              Upload your photo instead →
-            </a>
-          </p>
-        </form>
+              ✓
+            </span>
+            <h3
+              style={css(
+                "margin:6px 0 0;font-size:24px;font-weight:600;letter-spacing:-.02em;color:#ffffff"
+              )}
+            >
+              Thank you!
+            </h3>
+            <p
+              style={css(
+                "margin:0;font-size:16px;line-height:1.6;color:#c4c4dc;max-width:360px"
+              )}
+            >
+              We&apos;ve got your details and will get back to you within one
+              business day with a tailored quote.
+            </p>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            style={css(
+              "display:grid;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:clamp(22px,3vw,34px);backdrop-filter:blur(10px);box-shadow:0 30px 70px rgba(0,0,0,.4)"
+            )}
+          >
+            <label
+              htmlFor="lead-name"
+              style={css(
+                "font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a5a5c4"
+              )}
+            >
+              Full name
+            </label>
+            <input
+              id="lead-name"
+              name="name"
+              type="text"
+              required
+              placeholder="Jane Cohen"
+              style={css(FIELD_STYLE)}
+            />
+            <label htmlFor="lead-phone" style={css(LABEL_STYLE)}>
+              Phone number
+            </label>
+            <input
+              id="lead-phone"
+              name="phone"
+              type="tel"
+              required
+              placeholder="+1 555 0100"
+              style={css(FIELD_STYLE)}
+            />
+            <label htmlFor="lead-email" style={css(LABEL_STYLE)}>
+              Email
+            </label>
+            <input
+              id="lead-email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@email.com"
+              style={css(FIELD_STYLE)}
+            />
+            <label htmlFor="lead-service" style={css(LABEL_STYLE)}>
+              Product
+            </label>
+            <select
+              id="lead-service"
+              name="service"
+              required
+              defaultValue={defaultService}
+              style={css(`${FIELD_STYLE};appearance:none;cursor:pointer`)}
+            >
+              <option value="" disabled>
+                Which product?
+              </option>
+              {SERVICE_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="lead-message" style={css(LABEL_STYLE)}>
+              Message
+            </label>
+            <textarea
+              id="lead-message"
+              name="message"
+              rows={4}
+              placeholder="Sizes, wall measurements, deadline — anything helps."
+              style={css(`${FIELD_STYLE};resize:vertical`)}
+            ></textarea>
+            <button
+              type="submit"
+              disabled={submitting}
+              aria-busy={submitting}
+              style={css(
+                `margin-top:10px;padding:16px 30px;border:0;border-radius:999px;background:linear-gradient(135deg,#7b2ff7,#ec4899);color:#ffffff;font-family:inherit;font-size:16px;font-weight:600;cursor:${submitting ? "not-allowed" : "pointer"};opacity:${submitting ? "0.7" : "1"};box-shadow:0 14px 34px rgba(236,72,153,.34)`
+              )}
+            >
+              {submitting ? "Sending…" : "Submit"}
+            </button>
+            {error && (
+              <p
+                style={css(
+                  "margin:2px 0 0;font-size:13.5px;text-align:center;color:#fca5a5"
+                )}
+              >
+                {error}
+              </p>
+            )}
+            <p
+              style={css(
+                "margin:4px 0 0;font-size:12.5px;line-height:1.6;color:#9a9ab8"
+              )}
+            >
+              Prefer to just start?{" "}
+              <a href={uploadHref} style={css("color:#f472b6;font-weight:600")}>
+                Upload your photo instead →
+              </a>
+            </p>
+          </form>
+        )}
       </div>
     </section>
   );

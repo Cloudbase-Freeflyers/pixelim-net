@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import TrackingPixel from "@/components/TrackingPixel";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
           {/* Without JS the reveal observer never runs, so force sections visible. */}
           <style>{`.page-anim section,.page-anim footer{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
+        <TrackingPixel />
         {children}
       </body>
     </html>
