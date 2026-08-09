@@ -361,56 +361,21 @@ export default function ProductPage({ product }: { product: Product }) {
               />
               <span
                 style={css(
-                  "font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#9a9ab0"
+                  "font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9a9ab0"
                 )}
               >
-                iframe · id=&quot;order-app&quot;
+                Live pricing · secure upload
               </span>
             </div>
-            <div
+            <iframe
+              src="https://pixelim.net/pxp/?pxp=open"
+              title="Pixelim print order app"
+              loading="lazy"
+              allow="clipboard-write; fullscreen; payment"
               style={css(
-                `min-height:${APP_MIN_HEIGHT};background:#fff;display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,56px)`
+                `display:block;width:100%;height:${APP_MIN_HEIGHT};border:0`
               )}
-            >
-              <div style={css("width:100%;max-width:820px")}>
-                <div
-                  style={css(
-                    "border:2px dashed #d6d6e4;border-radius:18px;padding:clamp(30px,6vw,64px) 20px;text-align:center"
-                  )}
-                >
-                  <h3
-                    style={css(
-                      "margin:0;font-size:clamp(20px,3vw,28px);font-weight:500;background:linear-gradient(90deg,#7b2ff7,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent"
-                    )}
-                  >
-                    Drag &amp; Drop Your Files Here
-                  </h3>
-                  <p
-                    style={css(
-                      "margin:16px 0;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#a3a3b8"
-                    )}
-                  >
-                    or
-                  </p>
-                  <span
-                    style={css(
-                      "display:inline-block;padding:15px 34px;border-radius:999px;background:linear-gradient(135deg,#7b2ff7,#ec4899);color:#fff;font-size:16px;font-weight:600;box-shadow:0 14px 34px rgba(236,72,153,.3)"
-                    )}
-                  >
-                    Upload Files
-                  </span>
-                </div>
-                <p
-                  style={css(
-                    "margin:22px 0 0;text-align:center;font-size:13.5px;line-height:1.8;color:#8a8aa2"
-                  )}
-                >
-                  Allowed file types: JPG, PNG
-                  <br />
-                  Max size: 20MB
-                </p>
-              </div>
-            </div>
+            />
           </div>
         </div>
       </section>
@@ -535,86 +500,6 @@ export default function ProductPage({ product }: { product: Product }) {
                   `width:100%;aspect-ratio:3/2;border-radius:18px;background-color:#e7e7f1;background-image:url(${g.img});background-size:cover;background-position:center;box-shadow:0 14px 36px rgba(18,18,31,.08)`
                 )}
               ></div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section
-        style={css("padding:88px 20px;background:#ffffff;color:#12121f")}
-      >
-        <div style={css("max-width:1240px;margin:0 auto")}>
-          <div style={css("text-align:center;max-width:600px;margin:0 auto")}>
-            <p
-              style={css(
-                "margin:0;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a855f7"
-              )}
-            >
-              Reviews
-            </p>
-            <h2
-              style={css(
-                "margin:12px 0 0;font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em"
-              )}
-            >
-              What our customers say
-            </h2>
-          </div>
-          <div
-            style={css(
-              "display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:44px"
-            )}
-          >
-            {product.reviews.map((r) => (
-              <div
-                key={r.name}
-                style={css(
-                  "border:1px solid #ececf4;border-radius:20px;padding:28px;background:#fdfdff;box-shadow:0 12px 34px rgba(18,18,31,.05)"
-                )}
-              >
-                <span
-                  style={css(
-                    "color:#f59e0b;font-size:15px;letter-spacing:.14em"
-                  )}
-                >
-                  ★★★★★
-                </span>
-                <p
-                  style={css(
-                    "margin:16px 0 20px;font-size:15.5px;line-height:1.7;color:#3d3d52;text-wrap:pretty"
-                  )}
-                >
-                  {r.quote}
-                </p>
-                <div
-                  style={css("display:flex;align-items:center;gap:12px")}
-                >
-                  <span
-                    style={css(
-                      "width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#ec4899);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#fff"
-                    )}
-                  >
-                    {r.initial}
-                  </span>
-                  <span
-                    style={css(
-                      "display:flex;flex-direction:column;line-height:1.35"
-                    )}
-                  >
-                    <span
-                      style={css("font-size:14.5px;font-weight:600")}
-                    >
-                      {r.name}
-                    </span>
-                    <span
-                      style={css("font-size:12.5px;color:#8a8aa2")}
-                    >
-                      {r.meta}
-                    </span>
-                  </span>
-                </div>
-              </div>
             ))}
           </div>
         </div>

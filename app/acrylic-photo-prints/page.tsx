@@ -5,7 +5,7 @@ import { ACRYLIC } from "@/app/lib/products";
 export const metadata: Metadata = {
   title: "Acrylic Photo Prints — Pixelim",
   description:
-    "HD printing straight onto acrylic glass — vivid, durable, gallery-grade. From $39, ready in 24–72h.",
+    "HD printing straight onto acrylic glass — vivid, durable, gallery-grade.",
 };
 
 export default function Page() {

@@ -9,16 +9,15 @@ const ACRYLIC_ORDER = "/acrylic-photo-prints#order-app";
 
 const TRUST = [
   { glyph: "◈", title: "Safe purchase", body: "Encrypted checkout, no card details stored." },
-  { glyph: "◇", title: "Fast delivery", body: "Printed in 24–72h, insured worldwide shipping." },
+  { glyph: "◇", title: "Fast delivery", body: "Quick turnaround and carefully packed shipping." },
   { glyph: "◆", title: "100% guarantee", body: "Damaged or faulty? We reprint it, no argument." },
-  { glyph: "○", title: "Quality product", body: "Our own factory, our own presses, our own name on it." },
+  { glyph: "○", title: "Quality product", body: "Premium materials and careful quality control on every print." },
 ];
 
 const PRODUCTS = [
   {
     title: "Acrylic Glass Prints",
     body: "Glass-like depth and dazzling colour. The gallery look.",
-    price: "From $39",
     shot: "Panoramic acrylic print in a hallway",
     src: "/images/gallery-hallway.png",
     href: "/acrylic-photo-prints",
@@ -26,15 +25,13 @@ const PRODUCTS = [
   {
     title: "Canvas Prints",
     body: "Matte canvas on a solid stretcher frame. Warm and classic.",
-    price: "From $29",
     shot: "Canvas print above a sofa",
     src: "/images/product-canvas.png",
     href: "/canvas-prints",
   },
   {
     title: "Aluminum Prints",
-    body: "Slim 3mm metal, weatherproof. Great indoors and out.",
-    price: "From $45",
+    body: "Slim 3mm metal, durable indoors and out.",
     shot: "Aluminium prints in an office reception",
     src: "/images/product-aluminum.png",
     href: "/aluminium-prints",
@@ -43,22 +40,22 @@ const PRODUCTS = [
 
 const POSTS = [
   {
-    title: "Printing on acrylic glass",
-    body: "Direct printing onto transparent acrylic — how it gets that three-dimensional glow.",
+    title: "Photo Paper Printing",
+    body: "Printing on photo paper reflects your uniqueness. In a world where we're always taking pictures — at home, on vacation, at work — it brings those moments to life.",
+    shot: "Framed photo prints in a home",
+    src: "/images/gallery-bedroom.png",
+  },
+  {
+    title: "Printing on Acrylic Glass",
+    body: "Direct printing on acrylic glass (plexiglass) attached to PVC is an innovative product — the image is applied onto transparent acrylic for a three-dimensional look.",
     shot: "Close-up of an acrylic print edge",
     src: "/images/standoff-closeup.png",
   },
   {
-    title: "Printing on aluminum",
-    body: "Alucobond is durable, light and happy outdoors. Two finishes to choose from.",
+    title: "Printing on Aluminum",
+    body: "Aluminum (Alucobond) is durable against most weather conditions and lightweight — 3mm thick and suited to photos and signs, indoors and outdoors.",
     shot: "Aluminium prints in a reception",
     src: "/images/product-aluminum.png",
-  },
-  {
-    title: "Large-format work",
-    body: "Six feet wide, still razor sharp. How we handle statement walls.",
-    shot: "Large acrylic print in a stairwell",
-    src: "/images/gallery-stairwell.png",
   },
 ];
 
@@ -107,8 +104,8 @@ export default function Home() {
                 "margin:20px 0 0;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#c4c4dc;max-width:520px;text-wrap:pretty"
               )}
             >
-              Acrylic glass, canvas and aluminum prints made in our own factory.
-              Crafted to perfection. Made to last.
+              Acrylic glass, canvas and aluminum prints. Crafted to perfection.
+              Made to last.
             </p>
             <div
               style={css(
@@ -159,7 +156,7 @@ export default function Home() {
               "margin:0;text-align:center;font-size:clamp(22px,2.6vw,30px);font-weight:600;letter-spacing:-.02em;text-wrap:balance"
             )}
           >
-            Perfect printing, fast delivery &amp; peace of mind with every order
+            Perfect printing, fast delivery &amp; peace of mind with every purchase
           </h2>
           <div
             style={css(
@@ -263,19 +260,10 @@ export default function Home() {
                   </p>
                   <span
                     style={css(
-                      "display:flex;align-items:center;justify-content:space-between;gap:12px"
+                      "display:inline-flex;font-size:14.5px;font-weight:600;color:#ec4899"
                     )}
                   >
-                    <span style={css("font-size:14px;color:#8a8aa2")}>
-                      {p.price}
-                    </span>
-                    <span
-                      style={css(
-                        "font-size:14.5px;font-weight:600;color:#ec4899"
-                      )}
-                    >
-                      Explore →
-                    </span>
+                    Explore →
                   </span>
                 </div>
               </a>
@@ -331,8 +319,8 @@ export default function Home() {
             >
               {[
                 { big: "30+", small: "years printing" },
-                { big: "24–72h", small: "production time" },
                 { big: "100%", small: "quality guarantee" },
+                { big: "3", small: "print materials" },
               ].map((stat) => (
                 <div key={stat.small}>
                   <span
@@ -453,7 +441,7 @@ export default function Home() {
               "margin:18px 0 32px;font-size:17px;line-height:1.6;color:#c4c4dc"
             )}
           >
-            Upload it now — live pricing, free file check, worldwide shipping.
+            Upload it now — live pricing and a free file check.
           </p>
           <a
             href={ACRYLIC_ORDER}

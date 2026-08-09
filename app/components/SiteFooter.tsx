@@ -42,11 +42,10 @@ export default function SiteFooter() {
                 "margin:16px 0 0;font-size:14px;line-height:1.7;color:#9a9ab8;max-width:260px"
               )}
             >
-              Over three decades of digital printing in Israel. Shipping
-              worldwide.
+              Over three decades of digital printing in Israel.
             </p>
             <div style={css("display:flex;gap:10px;margin-top:18px")}>
-              {["in", "f", "yt"].map((s) => (
+              {["f", "ig", "yt"].map((s) => (
                 <a
                   key={s}
                   href="#"

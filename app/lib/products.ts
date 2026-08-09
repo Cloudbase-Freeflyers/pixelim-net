@@ -4,7 +4,6 @@ export type Option = { title: string; body: string; tags: string[] };
 export type Benefit = { glyph: string; title: string; body: string };
 export type Step = { n: string; title: string; body: string };
 export type GalleryTile = { label: string; img: string };
-export type Review = { quote: string; name: string; meta: string; initial: string };
 export type Faq = { q: string; a: string };
 
 export type Product = {
@@ -16,7 +15,7 @@ export type Product = {
     badge: string;
     titleLines: [string, string];
     para: string;
-    tags: [string, string, string];
+    tags: string[];
     priceLine: string;
   };
   why: { kicker: string; heading: string; para: string };
@@ -24,7 +23,6 @@ export type Product = {
   benefits: Benefit[];
   steps: Step[];
   gallery: GalleryTile[];
-  reviews: Review[];
   faqs: Faq[];
   contact: { img: string; alt: string };
   finalCta: { heading: string; para: string };
@@ -32,51 +30,51 @@ export type Product = {
 
 // ---- Content shared across all three product pages -------------------------
 
-const REVIEW_PEOPLE = [
-  { name: "Sarah M.", meta: "Verified buyer · Tel Aviv", initial: "S" },
-  { name: "Daniel K.", meta: "Verified buyer · London", initial: "D" },
-  { name: "Yael A.", meta: "Verified buyer · New York", initial: "Y" },
-] as const;
+const HERO_PRICE_LINE = "See your live price when you upload a photo.";
 
-const REVIEW_2_QUOTE =
-  "I sent a 12-year-old photo and expected the worst. They checked it, fixed it, and it came out sharp.";
+const STEPS: Step[] = [
+  {
+    n: "1",
+    title: "Upload your photo",
+    body: "Drop in a JPG or PNG and we'll check it looks great at your chosen size.",
+  },
+  {
+    n: "2",
+    title: "Pick size & finish",
+    body: "Choose your size, material and finish in the order tool.",
+  },
+  {
+    n: "3",
+    title: "Checkout securely",
+    body: "Review your live price and check out securely.",
+  },
+  {
+    n: "4",
+    title: "We print & ship",
+    body: "We produce your order and ship it to your door.",
+  },
+];
 
-const STEP_1: Step = {
-  n: "1",
-  title: "Upload your photo",
-  body: "Drop in a JPG or PNG. We check the quality for you.",
+const FAQ_MOUNT: Faq = {
+  q: "How does it mount on the wall?",
+  a: "Several mounting styles are available — pick the one that suits your wall when you place your order.",
 };
-const STEP_3: Step = {
-  n: "3",
-  title: "Checkout securely",
-  body: "Prices in USD. Card, PayPal or Apple Pay.",
-};
-const STEP_4: Step = {
-  n: "4",
-  title: "We print & ship",
-  body: "Produced in 24–72h, delivered in 10–12 business days.",
-};
-
 const FAQ_SHIPPING: Faq = {
   q: "What are the shipping times?",
-  a: "We produce in 24–72 hours, then delivery runs 10–12 business days worldwide. Every order ships insured with UPS, FedEx or TNT.",
+  a: "Shipping options and timing are shown at checkout, based on your delivery address.",
 };
 const FAQ_FILE: Faq = {
   q: "What file should I upload?",
-  a: "JPG or PNG up to 20MB. Bigger is better: aim for the original camera or phone file rather than a screenshot or a download from social media.",
+  a: "A high-resolution JPG or PNG works best — the larger the original file, the sharper the print.",
+};
+const FAQ_RETURN: Faq = {
+  q: "Can I return a print?",
+  a: "Prints are made to order, so returns are handled case by case for damage or a production fault — contact us and we'll put it right.",
 };
 const FAQ_TAX: Faq = {
   q: "Do prices include tax and shipping?",
-  a: "No. All prices are shown in USD before tax and shipping, which are calculated at checkout based on your address.",
+  a: "No — prices are shown before tax and shipping, which are added at checkout.",
 };
-
-function reviews(quote1: string, quote3: string): Review[] {
-  return [
-    { quote: quote1, ...REVIEW_PEOPLE[0] },
-    { quote: REVIEW_2_QUOTE, ...REVIEW_PEOPLE[1] },
-    { quote: quote3, ...REVIEW_PEOPLE[2] },
-  ];
-}
 
 // ---- The three products ----------------------------------------------------
 
@@ -89,13 +87,13 @@ export const ACRYLIC: Product = {
     badge: "Acrylic Glass Prints",
     titleLines: ["Printing on", "Acrylic Glass"],
     para: "HD printing straight onto acrylic glass — vivid, durable, gallery-grade. Your photo gets glass-like depth that lifts off the wall.",
-    tags: ["8″ to 6 ft wide", "True HD print", "Ready in 24–72h"],
-    priceLine: "From $39 · Free design check",
+    tags: ["Printed on acrylic glass", "Vivid & durable"],
+    priceLine: HERO_PRICE_LINE,
   },
   why: {
     kicker: "Why acrylic",
     heading: "Why choose acrylic photo prints?",
-    para: "Sturdy, glass-like depth. Colours that stay rich for decades. Nothing to dust, nothing to frame.",
+    para: "Sturdy, glass-like depth. Colours that stay rich over time. Nothing to dust, nothing to frame.",
   },
   options: {
     heading: "Two finishes. Same wow.",
@@ -118,16 +116,10 @@ export const ACRYLIC: Product = {
   benefits: [
     { glyph: "◈", title: "Vivid colours", body: "HD inks printed straight onto the glass. Every shade stays punchy." },
     { glyph: "◇", title: "Luxurious look", body: "Sleek, gallery-style depth that makes a photo feel like an object." },
-    { glyph: "◆", title: "Built to last", body: "Sturdy, glass-like acrylic that resists moisture, sun and scratches." },
+    { glyph: "◆", title: "Built to last", body: "Glass-like acrylic that resists moisture, sun and scratches." },
     { glyph: "○", title: "Effortless care", body: "A soft cloth is all it needs. No sprays, no special products." },
-    { glyph: "□", title: "No drilling needed", body: "Choose a hidden float mount and hang it without touching the wall." },
   ],
-  steps: [
-    STEP_1,
-    { n: "2", title: "Pick size & finish", body: "From 8 inches to six feet wide, glossy or matte." },
-    STEP_3,
-    STEP_4,
-  ],
+  steps: STEPS,
   gallery: [
     { label: "Acrylic print above a linen sofa", img: "/images/hero-living-room.png" },
     { label: "Acrylic triptych in a home office", img: "/images/gallery-office.png" },
@@ -136,25 +128,15 @@ export const ACRYLIC: Product = {
     { label: "Small acrylic prints in a kitchen", img: "/images/gallery-kitchen.png" },
     { label: "Large-format acrylic print in a stairwell", img: "/images/gallery-stairwell.png" },
   ],
-  reviews: reviews(
-    "The colour is unreal — it genuinely glows on the wall. Hung in ten minutes with the standoffs.",
-    "Second order this year. Packaging is bulletproof and it arrived faster than promised."
-  ),
   faqs: [
     {
       q: "How long will an acrylic print last?",
-      a: "Decades indoors. The acrylic shields the print from moisture and scratches, and our inks are rated to resist fading for 50+ years away from direct sun.",
+      a: "Made to last for years. The acrylic shields your photo from moisture and scratches, so it keeps its rich colours and clarity over time.",
     },
-    {
-      q: "How does it mount on the wall?",
-      a: "Two ways. Standoff hardware holds it a few millimetres off the wall for a floating look, or choose the hidden back rail — no visible fixings and no drilling into the print.",
-    },
+    FAQ_MOUNT,
     FAQ_SHIPPING,
     FAQ_FILE,
-    {
-      q: "Can I return a print?",
-      a: "Custom prints are made for you, so we only accept returns for damage or a production fault — tell us within 14 days and we reprint or refund, no argument.",
-    },
+    FAQ_RETURN,
     FAQ_TAX,
   ],
   contact: {
@@ -163,7 +145,7 @@ export const ACRYLIC: Product = {
   },
   finalCta: {
     heading: "Ready to order your acrylic print?",
-    para: "Gallery-grade colour · produced in 24–72h · delivered in 10–12 business days.",
+    para: "Gallery-grade colour, made to last.",
   },
 };
 
@@ -176,8 +158,8 @@ export const CANVAS: Product = {
     badge: "Canvas Prints",
     titleLines: ["Printing on", "Fine-Art Canvas"],
     para: "Rich pigment inks on woven cotton canvas — warm, textured, gallery-wrapped. Your photo becomes a piece of art, frame included.",
-    tags: ["8″ to 8 ft wide", "Museum pigment inks", "Ready in 24–72h"],
-    priceLine: "From $29 · Free design check",
+    tags: ["Matte cotton canvas", "On a stretcher frame"],
+    priceLine: HERO_PRICE_LINE,
   },
   why: {
     kicker: "Why canvas",
@@ -205,16 +187,10 @@ export const CANVAS: Product = {
   benefits: [
     { glyph: "◈", title: "Warm, rich colour", body: "Pigment inks soak into cotton canvas for deep, natural tones." },
     { glyph: "◇", title: "Zero glare", body: "A matte woven surface means no reflections, on any wall, in any light." },
-    { glyph: "◆", title: "Solid wood frame", body: "Hand-stretched over a kiln-dried stretcher bar that will not warp." },
+    { glyph: "◆", title: "Solid wood frame", body: "Hand-stretched over a wooden stretcher frame." },
     { glyph: "○", title: "Light to hang", body: "Far lighter than glass. One hook and it is up in minutes." },
-    { glyph: "□", title: "Arrives ready", body: "Framed, wired and packed. Unbox it and put it straight on the wall." },
   ],
-  steps: [
-    STEP_1,
-    { n: "2", title: "Pick size & wrap", body: "From 8 inches to eight feet wide, gallery or mirror wrap." },
-    STEP_3,
-    STEP_4,
-  ],
+  steps: STEPS,
   gallery: [
     { label: "Panoramic canvas print above a curved sofa", img: "/images/canvas-living.png" },
     { label: "Canvas triptych in a dining area", img: "/images/canvas-dining.png" },
@@ -223,25 +199,18 @@ export const CANVAS: Product = {
     { label: "Canvas print in a warm living room", img: "/images/product-canvas.png" },
     { label: "Canvas print glowing in a dark room", img: "/images/canvas-hero-dark.png" },
   ],
-  reviews: reviews(
-    "The texture makes it feel like a painting, not a photo. It suits our living room perfectly.",
-    "Third canvas from Pixelim. The frames are properly made — no sagging, no warping."
-  ),
   faqs: [
     {
       q: "How long will a canvas print last?",
-      a: "Decades indoors. We use pigment inks rated to resist fading for 75+ years, plus a protective coating that guards against dust, moisture and light scuffs.",
+      a: "Made to last for years indoors. A protective finish helps guard the canvas against dust, moisture and light scuffs.",
     },
     {
       q: "How does it mount on the wall?",
-      a: "It arrives stretched on a wooden frame with the hanging hardware already fitted. One nail or hook and it is level — no framing shop, no extra parts.",
+      a: "It arrives stretched on a wooden frame with the hanging hardware already fitted — one hook and it's level.",
     },
     FAQ_SHIPPING,
     FAQ_FILE,
-    {
-      q: "Can I return a canvas?",
-      a: "Custom prints are made for you, so we only accept returns for damage or a production fault — tell us within 14 days and we reprint or refund, no argument.",
-    },
+    { ...FAQ_RETURN, q: "Can I return a canvas?" },
     FAQ_TAX,
   ],
   contact: {
@@ -250,7 +219,7 @@ export const CANVAS: Product = {
   },
   finalCta: {
     heading: "Ready to order your canvas print?",
-    para: "Hand-stretched · produced in 24–72h · delivered in 10–12 business days.",
+    para: "Hand-stretched on a solid frame, ready to hang.",
   },
 };
 
@@ -263,13 +232,13 @@ export const ALUMINIUM: Product = {
     badge: "Aluminum Prints",
     titleLines: ["Printing on", "Brushed Aluminum"],
     para: "Photos fused into slim metal — sharp, weatherproof, impossibly thin. A modern edge that works indoors and out.",
-    tags: ["8″ to 10 ft wide", "Weatherproof 3mm metal", "Ready in 24–72h"],
-    priceLine: "From $45 · Free design check",
+    tags: ["3mm aluminum panel", "Indoor & outdoor"],
+    priceLine: HERO_PRICE_LINE,
   },
   why: {
     kicker: "Why aluminum",
     heading: "Why choose aluminum prints?",
-    para: "Razor-sharp detail on a panel just 3mm thick. Shrug off sun, steam and salt air — indoors or out.",
+    para: "Razor-sharp detail on a panel just 3mm thick, durable against most weather conditions — indoors or out.",
   },
   options: {
     heading: "Two surfaces. One clean edge.",
@@ -292,16 +261,10 @@ export const ALUMINIUM: Product = {
   benefits: [
     { glyph: "◈", title: "Knife-sharp detail", body: "Inks fuse into the coating, so fine texture and small type stay crisp." },
     { glyph: "◇", title: "Slim modern look", body: "Just 3mm thick with a clean cut edge. No frame, no glass, no bulk." },
-    { glyph: "◆", title: "Weatherproof", body: "Happy in bathrooms, kitchens, patios and salt air. Rust never enters it." },
+    { glyph: "◆", title: "Weatherproof", body: "Durable against most weather conditions — happy indoors and out." },
     { glyph: "○", title: "Wipe and go", body: "A damp cloth clears anything. Nothing to yellow, nothing to crack." },
-    { glyph: "□", title: "Floats off the wall", body: "A hidden rail lifts it a few millimetres — fixings never show." },
   ],
-  steps: [
-    STEP_1,
-    { n: "2", title: "Pick size & surface", body: "From 8 inches to ten feet wide, brushed or matte white." },
-    STEP_3,
-    STEP_4,
-  ],
+  steps: STEPS,
   gallery: [
     { label: "Aluminium print in a home office", img: "/images/aluminum-office.png" },
     { label: "Two aluminium prints in a hallway", img: "/images/aluminum-hallway.png" },
@@ -310,24 +273,17 @@ export const ALUMINIUM: Product = {
     { label: "Aluminium prints in an office reception", img: "/images/product-aluminum.png" },
     { label: "Aluminium print glowing in a dark room", img: "/images/aluminum-hero-dark.png" },
   ],
-  reviews: reviews(
-    "We put one on a covered patio two summers ago. Sun, rain, humidity — it still looks new.",
-    "Ordered four for our reception. The float mount makes them look like they cost a fortune."
-  ),
   faqs: [
     {
       q: "How long will an aluminum print last?",
-      a: "Decades, indoors or out. The image is fused into a coating bonded to the metal, so it will not peel, yellow or rot — and the panel cannot rust.",
+      a: "Aluminum is durable and weather-resistant, so it holds its colour for years — indoors or in covered outdoor spaces.",
     },
-    {
-      q: "How does it mount on the wall?",
-      a: "A hidden aluminium rail is fitted to the back, so the panel floats a few millimetres off the wall with no visible fixings. Standoff bolts are available if you prefer them on show.",
-    },
+    FAQ_MOUNT,
     FAQ_SHIPPING,
     FAQ_FILE,
     {
       q: "Can I use it outdoors?",
-      a: "Yes. Aluminum is our only fully weatherproof product. Keep it out of constant direct midday sun and it will hold colour for years on a patio or entrance wall.",
+      a: "Yes — aluminum is durable against most weather conditions, so it suits covered outdoor spaces as well as indoors.",
     },
     FAQ_TAX,
   ],
@@ -337,6 +293,6 @@ export const ALUMINIUM: Product = {
   },
   finalCta: {
     heading: "Ready to order your aluminum print?",
-    para: "Weatherproof finish · produced in 24–72h · delivered in 10–12 business days.",
+    para: "A weatherproof, modern finish for indoors and out.",
   },
 };

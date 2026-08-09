@@ -160,7 +160,7 @@ export default function ContactSection({
               "margin:22px 0 0;font-size:14px;line-height:1.7;color:#9a9ab8"
             )}
           >
-            We reply within one business day. Sun–Thu, 9:00–18:00 IST.
+            We reply within one business day.
           </p>
         </div>
 

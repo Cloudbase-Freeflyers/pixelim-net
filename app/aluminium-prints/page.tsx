@@ -5,7 +5,7 @@ import { ALUMINIUM } from "@/app/lib/products";
 export const metadata: Metadata = {
   title: "Aluminum Prints — Pixelim",
   description:
-    "Photos fused into slim, weatherproof metal — sharp and impossibly thin. From $45, ready in 24–72h.",
+    "Photos fused into slim, weatherproof metal — sharp and impossibly thin.",
 };
 
 export default function Page() {

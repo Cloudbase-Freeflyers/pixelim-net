@@ -13,7 +13,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Pixelim — Premium Photo Printing",
   description:
-    "Acrylic glass, canvas and aluminum photo prints made in our own factory. Crafted to perfection. Made to last.",
+    "Acrylic glass, canvas and aluminum photo prints. Crafted to perfection. Made to last.",
 };
 
 export default function RootLayout({
