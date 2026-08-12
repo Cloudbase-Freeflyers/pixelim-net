@@ -80,18 +80,6 @@ export default function SiteHeader({
           >
             Create Yours
           </a>
-          <span
-            style={css(
-              "display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-size:13px;color:#e6e6f2"
-            )}
-          >
-            <span
-              style={css(
-                "width:6px;height:6px;border-radius:50%;background:#f472b6"
-              )}
-            ></span>
-            $0.00
-          </span>
         </div>
       </div>
     </div>
