@@ -1,20 +1,31 @@
 import { css } from "@/app/lib/css";
 
-const PAYMENTS = ["PayPal", "Visa", "Mastercard", "Amex", "Apple Pay"];
-const DELIVERY = ["UPS", "FedEx", "TNT"];
-const SHOPPING = ["SSL encrypted", "Max protection"];
-
-function Chip({ label }: { label: string }) {
-  return (
-    <span
-      style={css(
-        "padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.06);font-size:11.5px;color:#d4d4e6"
-      )}
-    >
-      {label}
-    </span>
-  );
-}
+const BADGES = [
+  {
+    title: "Secure shopping",
+    img: "/secure-shopping-icons.png",
+    alt: "Encrypted, SSL-secured shopping",
+    height: 40,
+  },
+  {
+    title: "Secure shipping",
+    img: "/secure-shipping-icon.png",
+    alt: "Maximum protection shipping",
+    height: 40,
+  },
+  {
+    title: "Dependable delivery",
+    img: "/shipping-companies-icons.gif",
+    alt: "Delivery with UPS, TNT and FedEx",
+    height: 36,
+  },
+  {
+    title: "Secure payment",
+    img: "/payments-icons.gif",
+    alt: "Apple Pay, Mastercard, Visa, PayPal and American Express",
+    height: 74,
+  },
+];
 
 /** Site-wide footer. Identical on every page. */
 export default function SiteFooter() {
@@ -44,19 +55,6 @@ export default function SiteFooter() {
             >
               Over three decades of digital printing in Israel.
             </p>
-            <div style={css("display:flex;gap:10px;margin-top:18px")}>
-              {["f", "ig", "yt"].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  style={css(
-                    "width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:12px;color:#c9c9de"
-                  )}
-                >
-                  {s}
-                </a>
-              ))}
-            </div>
           </div>
           <div>
             <h4
@@ -76,7 +74,7 @@ export default function SiteFooter() {
               <a href="/aluminium-prints" style={css("color:#c9c9de")}>
                 Aluminum Prints
               </a>
-              <a href="#products" style={css("color:#c9c9de")}>
+              <a href="/#products" style={css("color:#c9c9de")}>
                 Products Catalog
               </a>
             </div>
@@ -93,11 +91,8 @@ export default function SiteFooter() {
               <a href="/" style={css("color:#c9c9de")}>
                 Home
               </a>
-              <a href="#" style={css("color:#c9c9de")}>
+              <a href="/#about" style={css("color:#c9c9de")}>
                 About
-              </a>
-              <a href="#" style={css("color:#c9c9de")}>
-                Blog
               </a>
               <a href="#contact" style={css("color:#c9c9de")}>
                 Contact us
@@ -124,65 +119,32 @@ export default function SiteFooter() {
         </div>
         <div
           style={css(
-            "display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.07)"
+            "margin-top:48px;padding:clamp(24px,3vw,30px) clamp(20px,3vw,36px);background:#ffffff;border-radius:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px 24px;align-items:start"
           )}
         >
-          <div>
-            <h5
-              style={css(
-                "margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8a8aa8"
-              )}
-            >
-              Secure payment
-            </h5>
-            <div style={css("display:flex;flex-wrap:wrap;gap:8px")}>
-              {PAYMENTS.map((p) => (
-                <Chip key={p} label={p} />
-              ))}
+          {BADGES.map((b) => (
+            <div key={b.title}>
+              <h5
+                style={css(
+                  "margin:0 0 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280"
+                )}
+              >
+                {b.title}
+              </h5>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={b.img}
+                alt={b.alt}
+                style={css(`display:block;height:${b.height}px;width:auto`)}
+              />
             </div>
-          </div>
-          <div>
-            <h5
-              style={css(
-                "margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8a8aa8"
-              )}
-            >
-              Dependable delivery
-            </h5>
-            <div style={css("display:flex;flex-wrap:wrap;gap:8px")}>
-              {DELIVERY.map((d) => (
-                <Chip key={d} label={d} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <h5
-              style={css(
-                "margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8a8aa8"
-              )}
-            >
-              Secure shopping
-            </h5>
-            <div style={css("display:flex;flex-wrap:wrap;gap:8px")}>
-              {SHOPPING.map((s) => (
-                <Chip key={s} label={s} />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
         <div
           style={css(
             "display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:36px;padding:22px 0 100px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#8a8aa8"
           )}
         >
-          <div style={css("display:flex;gap:18px")}>
-            <a href="#" style={css("color:#8a8aa8")}>
-              Terms and Conditions
-            </a>
-            <a href="#" style={css("color:#8a8aa8")}>
-              Privacy Policy
-            </a>
-          </div>
           <span>© Pixelim 2026 · Prices do not include tax and shipping</span>
         </div>
       </div>

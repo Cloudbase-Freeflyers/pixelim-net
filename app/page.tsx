@@ -3,7 +3,6 @@ import SiteHeader from "@/app/components/SiteHeader";
 import SiteFooter from "@/app/components/SiteFooter";
 import ContactSection from "@/app/components/ContactSection";
 import StickyCta from "@/app/components/StickyCta";
-import ScrollReveal from "@/app/components/ScrollReveal";
 
 const ACRYLIC_ORDER = "/acrylic-photo-prints#order-app";
 
@@ -38,27 +37,6 @@ const PRODUCTS = [
   },
 ];
 
-const POSTS = [
-  {
-    title: "Photo Paper Printing",
-    body: "Printing on photo paper reflects your uniqueness. In a world where we're always taking pictures — at home, on vacation, at work — it brings those moments to life.",
-    shot: "Framed photo prints in a home",
-    src: "/images/gallery-bedroom.png",
-  },
-  {
-    title: "Printing on Acrylic Glass",
-    body: "Direct printing on acrylic glass (plexiglass) attached to PVC is an innovative product — the image is applied onto transparent acrylic for a three-dimensional look.",
-    shot: "Close-up of an acrylic print edge",
-    src: "/images/standoff-closeup.png",
-  },
-  {
-    title: "Printing on Aluminum",
-    body: "Aluminum (Alucobond) is durable against most weather conditions and lightweight — 3mm thick and suited to photos and signs, indoors and outdoors.",
-    shot: "Aluminium prints in a reception",
-    src: "/images/product-aluminum.png",
-  },
-];
-
 const HOME_CONTACT_PARA =
   "Big wall, unusual size, or a photo you are not sure about? Tell us what you have in mind and we will come back with a plan and a price.";
 
@@ -70,7 +48,6 @@ export default function Home() {
         "font-family:var(--font-poppins),Helvetica,Arial,sans-serif;background:#0d0d1a;color:#ffffff;overflow-x:hidden"
       )}
     >
-      <ScrollReveal />
       <SiteHeader active="home" createHref={ACRYLIC_ORDER} />
 
       {/* Hero */}
@@ -273,7 +250,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section style={css("padding:88px 20px;background:#0d0d1a")}>
+      <section id="about" style={css("padding:88px 20px;background:#0d0d1a")}>
         <div
           style={css(
             "max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:52px;align-items:center"
@@ -336,81 +313,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* From the print floor */}
-      <section style={css("padding:88px 20px;background:#f7f7fb;color:#12121f")}>
-        <div style={css("max-width:1240px;margin:0 auto")}>
-          <div
-            style={css(
-              "display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px"
-            )}
-          >
-            <div>
-              <p
-                style={css(
-                  "margin:0;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a855f7"
-                )}
-              >
-                Latest updates
-              </p>
-              <h2
-                style={css(
-                  "margin:12px 0 0;font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em"
-                )}
-              >
-                From the print floor
-              </h2>
-            </div>
-            <a
-              href="#"
-              style={css("font-size:15px;font-weight:600;color:#a855f7")}
-            >
-              More updates →
-            </a>
-          </div>
-          <div
-            style={css(
-              "display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:36px"
-            )}
-          >
-            {POSTS.map((p) => (
-              <a
-                key={p.title}
-                href="#"
-                className="card-post"
-                style={css(
-                  "display:block;background:#fff;border:1px solid #ececf4;border-radius:20px;overflow:hidden;color:#12121f"
-                )}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.src}
-                  alt={p.shot}
-                  style={css(
-                    "display:block;width:100%;aspect-ratio:16/10;object-fit:cover"
-                  )}
-                />
-                <div style={css("padding:22px")}>
-                  <h3
-                    style={css(
-                      "margin:0 0 8px;font-size:17.5px;font-weight:600"
-                    )}
-                  >
-                    {p.title}
-                  </h3>
-                  <p
-                    style={css(
-                      "margin:0;font-size:14px;line-height:1.6;color:#5a5a72"
-                    )}
-                  >
-                    {p.body}
-                  </p>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
       </section>

@@ -7,7 +7,6 @@ import SiteHeader from "@/app/components/SiteHeader";
 import SiteFooter from "@/app/components/SiteFooter";
 import ContactSection from "@/app/components/ContactSection";
 import StickyCta from "@/app/components/StickyCta";
-import ScrollReveal from "@/app/components/ScrollReveal";
 
 const ACCENT_A = "#7b2ff7";
 const ACCENT_B = "#ec4899";
@@ -34,7 +33,6 @@ export default function ProductPage({ product }: { product: Product }) {
         "font-family:var(--font-poppins),Helvetica,Arial,sans-serif;background:#0d0d1a;color:#ffffff;overflow-x:hidden"
       )}
     >
-      <ScrollReveal />
       <SiteHeader active={product.active} createHref="#order-app" />
 
       {/* Hero */}

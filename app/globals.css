@@ -61,26 +61,25 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* Scroll-reveal: every section/footer fades and rises into view.
-   The controller (ScrollReveal.tsx) adds `.is-visible` when the element
-   enters the viewport. Base state is hidden so nothing flashes in early. */
+/* Simple one-time fade-up on load. No JS/observer, so a section can never get
+   stuck hidden — the animation always resolves to the visible end state. */
+@keyframes pixelim-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 .page-anim section,
 .page-anim footer {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.page-anim section.is-visible,
-.page-anim footer.is-visible {
-  opacity: 1;
-  transform: none;
+  animation: pixelim-fade-up 0.6s ease-out both;
 }
 @media (prefers-reduced-motion: reduce) {
   .page-anim section,
   .page-anim footer {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    animation: none;
   }
 }

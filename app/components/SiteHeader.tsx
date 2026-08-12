@@ -67,9 +67,6 @@ export default function SiteHeader({
               </a>
             );
           })}
-          <a href="#" style={css("color:#c9c9de")}>
-            Blog
-          </a>
           <a href="#contact" style={css("color:#c9c9de")}>
             Contact
           </a>
