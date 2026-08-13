@@ -23,7 +23,6 @@ const SERVICE_BY_ACTIVE: Record<string, string> = {
 };
 
 export default function ProductPage({ product }: { product: Product }) {
-  const [option, setOption] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
@@ -185,123 +184,6 @@ export default function ProductPage({ product }: { product: Product }) {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Options */}
-      <section
-        style={css("padding:88px 20px;background:#ffffff;color:#12121f")}
-      >
-        <div style={css("max-width:1240px;margin:0 auto")}>
-          <div
-            style={css(
-              "display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:center"
-            )}
-          >
-            <div>
-              <p
-                style={css(
-                  "margin:0;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a855f7"
-                )}
-              >
-                Options
-              </p>
-              <h2
-                style={css(
-                  "margin:12px 0 0;font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em"
-                )}
-              >
-                {product.options.heading}
-              </h2>
-              <p
-                style={css(
-                  "margin:14px 0 0;font-size:17px;line-height:1.6;color:#55556e;max-width:460px;text-wrap:pretty"
-                )}
-              >
-                {product.options.para}
-              </p>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={product.options.edgeImg}
-                alt={product.options.edgeAlt}
-                style={css(
-                  "display:block;width:100%;margin-top:26px;aspect-ratio:16/9;object-fit:cover;border-radius:18px;box-shadow:0 16px 40px rgba(18,18,31,.1)"
-                )}
-              />
-            </div>
-            <div style={css("display:grid;gap:16px")}>
-              {product.options.items.map((o, i) => {
-                const selected = option === i;
-                const border = selected
-                  ? `2px solid ${ACCENT_B}`
-                  : "1px solid #e6e6f0";
-                const bg = selected
-                  ? "linear-gradient(135deg,rgba(123,47,247,.06),rgba(236,72,153,.08))"
-                  : "#fdfdff";
-                const dotBorder = selected
-                  ? `6px solid ${ACCENT_B}`
-                  : "2px solid #d6d6e4";
-                const dotBg = selected ? "#fff" : "transparent";
-                return (
-                  <div
-                    key={o.title}
-                    onClick={() => setOption(i)}
-                    style={css(
-                      `cursor:pointer;position:relative;border:${border};border-radius:20px;padding:26px;background:${bg};transition:border-color .2s ease,box-shadow .2s ease`
-                    )}
-                  >
-                    <div
-                      style={css(
-                        "display:flex;align-items:center;justify-content:space-between;gap:16px"
-                      )}
-                    >
-                      <h3
-                        style={css("margin:0;font-size:19px;font-weight:600")}
-                      >
-                        {o.title}
-                      </h3>
-                      <span
-                        style={css(
-                          `width:22px;height:22px;border-radius:50%;border:${dotBorder};background:${dotBg};flex:0 0 auto`
-                        )}
-                      ></span>
-                    </div>
-                    <p
-                      style={css(
-                        "margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#5a5a72"
-                      )}
-                    >
-                      {o.body}
-                    </p>
-                    <div
-                      style={css(
-                        "display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"
-                      )}
-                    >
-                      {o.tags.map((t) => (
-                        <span
-                          key={t}
-                          style={css(
-                            "padding:6px 12px;border-radius:999px;background:#f4f4fa;font-size:12.5px;color:#4a4a63"
-                          )}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-              <a
-                href="#order-app"
-                style={css(
-                  "padding:16px 30px;border-radius:999px;background:linear-gradient(135deg,#7b2ff7,#ec4899);color:#fff;font-size:15.5px;font-weight:600;text-align:center;box-shadow:0 14px 34px rgba(236,72,153,.28)"
-                )}
-              >
-                Order Yours Now
-              </a>
-            </div>
           </div>
         </div>
       </section>

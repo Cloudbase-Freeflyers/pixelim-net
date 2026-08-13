@@ -18,21 +18,21 @@ const PRODUCTS = [
     title: "Acrylic Glass Prints",
     body: "Glass-like depth and dazzling colour. The gallery look.",
     shot: "Panoramic acrylic print in a hallway",
-    src: "/images/gallery-hallway.png",
+    src: "/images/gallery-hallway.webp",
     href: "/acrylic-photo-prints",
   },
   {
     title: "Canvas Prints",
     body: "Matte canvas on a solid stretcher frame. Warm and classic.",
     shot: "Canvas print above a sofa",
-    src: "/images/product-canvas.png",
+    src: "/images/product-canvas.webp",
     href: "/canvas-prints",
   },
   {
     title: "Aluminum Prints",
     body: "Slim 3mm metal, durable indoors and out.",
     shot: "Aluminium prints in an office reception",
-    src: "/images/product-aluminum.png",
+    src: "/images/product-aluminum.webp",
     href: "/aluminium-prints",
   },
 ];
@@ -115,7 +115,7 @@ export default function Home() {
             ></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/hero-living-room.png"
+              src="/images/hero-living-room.webp"
               alt="Acrylic glass photo print above a linen sofa in a warm modern living room"
               style={css(
                 "position:relative;display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px rgba(0,0,0,.55)"
@@ -258,7 +258,7 @@ export default function Home() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/press-floor.png"
+            src="/images/press-floor.webp"
             alt="Large-format printer producing a photo on acrylic glass"
             style={css(
               "display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.12)"
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       <ContactSection
-        bgImg="/images/gallery-stairwell.png"
+        bgImg="/images/gallery-stairwell.webp"
         bgAlt="Large print in a warm modern stairwell"
         para={HOME_CONTACT_PARA}
         uploadHref={ACRYLIC_ORDER}
