@@ -106,7 +106,6 @@ export const ACRYLIC: Product = {
     { label: "Portrait acrylic print above a bed", img: "/images/gallery-bedroom.webp" },
     { label: "Panoramic acrylic print in a hallway", img: "/images/gallery-hallway.webp" },
     { label: "Small acrylic prints in a kitchen", img: "/images/gallery-kitchen.webp" },
-    { label: "Large-format acrylic print in a stairwell", img: "/images/gallery-stairwell.webp" },
   ],
   faqs: [
     {
@@ -159,7 +158,6 @@ export const CANVAS: Product = {
     { label: "Canvas print above a bed", img: "/images/canvas-bedroom.webp" },
     { label: "Small canvas prints in a nursery", img: "/images/canvas-nursery.webp" },
     { label: "Canvas print in a warm living room", img: "/images/product-canvas.webp" },
-    { label: "Canvas print glowing in a dark room", img: "/images/canvas-hero-dark.webp" },
   ],
   faqs: [
     {
@@ -215,7 +213,6 @@ export const ALUMINIUM: Product = {
     { label: "Aluminium print in a restaurant interior", img: "/images/aluminum-restaurant.webp" },
     { label: "Weatherproof aluminium print on a patio", img: "/images/aluminum-patio.webp" },
     { label: "Aluminium prints in an office reception", img: "/images/product-aluminum.webp" },
-    { label: "Aluminium print glowing in a dark room", img: "/images/aluminum-hero-dark.webp" },
   ],
   faqs: [
     {
