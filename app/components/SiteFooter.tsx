@@ -36,6 +36,28 @@ export default function SiteFooter() {
       )}
     >
       <div style={css("max-width:1240px;margin:0 auto")}>
+        {/* International shipping */}
+        <div
+          style={css(
+            "margin-bottom:44px;padding:22px 24px;border-radius:16px;background:linear-gradient(135deg,rgba(123,47,247,.16),rgba(236,72,153,.14));border:1px solid rgba(255,255,255,.1);text-align:center"
+          )}
+        >
+          <p
+            style={css(
+              "margin:0;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f0abfc"
+            )}
+          >
+            International shipping
+          </p>
+          <p
+            style={css(
+              "margin:8px auto 0;font-size:15px;line-height:1.65;color:#d4d4e6;max-width:660px"
+            )}
+          >
+            We ship internationally, delivering premium acrylic, canvas and
+            aluminum prints straight to your door anywhere in the United States.
+          </p>
+        </div>
         <div
           style={css(
             "display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px"
@@ -53,7 +75,7 @@ export default function SiteFooter() {
                 "margin:16px 0 0;font-size:14px;line-height:1.7;color:#9a9ab8;max-width:260px"
               )}
             >
-              Over three decades of digital printing in Israel.
+              Over three decades of premium digital photo printing.
             </p>
           </div>
           <div>
@@ -111,8 +133,8 @@ export default function SiteFooter() {
               <a href="mailto:info@pixelim.net" style={css("color:#c9c9de")}>
                 info@pixelim.net
               </a>
-              <a href="tel:+972502225505" style={css("color:#c9c9de")}>
-                +972 50 2225505
+              <a href="tel:+18182355900" style={css("color:#c9c9de")}>
+                +1 (818) 235-5900
               </a>
             </div>
           </div>

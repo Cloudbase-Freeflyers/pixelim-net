@@ -284,8 +284,8 @@ export default function Home() {
                 "margin:18px 0 0;font-size:16.5px;line-height:1.7;color:#c4c4dc;max-width:520px;text-wrap:pretty"
               )}
             >
-              For over thirty years we&apos;ve set the bar for printing in
-              Israel. An experienced team, the most advanced digital presses
+              For over thirty years we&apos;ve set the bar for premium photo
+              printing. An experienced team, the most advanced digital presses
               available, and no shortcuts on the part that matters — how your
               photo looks on the wall.
             </p>

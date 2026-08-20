@@ -522,12 +522,12 @@ export default function ProductPage({ product }: { product: Product }) {
                 Know exactly where your print is, from press to doorstep.
               </p>
               <a
-                href="tel:+972502225505"
+                href="tel:+18182355900"
                 style={css(
                   "font-size:14.5px;font-weight:600;color:#ec4899"
                 )}
               >
-                +972 50 2225505 →
+                +1 (818) 235-5900 →
               </a>
             </div>
             <div
