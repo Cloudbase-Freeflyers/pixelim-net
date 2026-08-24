@@ -24,6 +24,7 @@ const SERVICE_BY_ACTIVE: Record<string, string> = {
 
 export default function ProductPage({ product }: { product: Product }) {
   const [openFaq, setOpenFaq] = useState(0);
+  const [phoneRevealed, setPhoneRevealed] = useState(false);
 
   return (
     <div
@@ -521,14 +522,27 @@ export default function ProductPage({ product }: { product: Product }) {
               >
                 Know exactly where your print is, from press to doorstep.
               </p>
-              <a
-                href="tel:+18182355900"
-                style={css(
-                  "font-size:14.5px;font-weight:600;color:#ec4899"
-                )}
-              >
-                +1 (818) 235-5900 →
-              </a>
+              {phoneRevealed ? (
+                <a
+                  href="tel:+18182355900"
+                  style={css(
+                    "font-size:14.5px;font-weight:600;color:#ec4899"
+                  )}
+                >
+                  +1 (818) 235-5900 →
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPhoneRevealed(true)}
+                  aria-label="Show phone number"
+                  style={css(
+                    "font-size:14.5px;font-weight:600;color:#ec4899;background:transparent;border:0;padding:0;cursor:pointer;font-family:inherit"
+                  )}
+                >
+                  Call us →
+                </button>
+              )}
             </div>
             <div
               style={css(
