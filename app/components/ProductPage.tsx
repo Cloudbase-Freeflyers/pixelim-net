@@ -25,6 +25,7 @@ const SERVICE_BY_ACTIVE: Record<string, string> = {
 export default function ProductPage({ product }: { product: Product }) {
   const [openFaq, setOpenFaq] = useState(0);
   const [phoneRevealed, setPhoneRevealed] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
     <div
@@ -185,6 +186,84 @@ export default function ProductPage({ product }: { product: Product }) {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product video */}
+      <section style={css("padding:88px 20px;background:#ffffff;color:#12121f")}>
+        <div style={css("max-width:960px;margin:0 auto")}>
+          <div
+            style={css("text-align:center;max-width:640px;margin:0 auto 36px")}
+          >
+            <p
+              style={css(
+                "margin:0;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a855f7"
+              )}
+            >
+              Watch
+            </p>
+            <h2
+              style={css(
+                "margin:12px 0 0;font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em"
+              )}
+            >
+              See it in action
+            </h2>
+          </div>
+          <div
+            style={css(
+              "position:relative;width:100%;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 70px rgba(18,18,31,.18);border:1px solid #ececf4"
+            )}
+          >
+            {videoPlaying ? (
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${product.video}?autoplay=1&rel=0`}
+                title={`${product.hero.badge} video`}
+                loading="lazy"
+                allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+                style={css(
+                  "position:absolute;inset:0;width:100%;height:100%;border:0"
+                )}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setVideoPlaying(true)}
+                aria-label="Play video"
+                style={css(
+                  "position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;cursor:pointer;background:#000"
+                )}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://i.ytimg.com/vi/${product.video}/maxresdefault.jpg`}
+                  alt=""
+                  onError={(e) => {
+                    const t = e.currentTarget;
+                    if (!t.dataset.fallback) {
+                      t.dataset.fallback = "1";
+                      t.src = `https://i.ytimg.com/vi/${product.video}/hqdefault.jpg`;
+                    }
+                  }}
+                  style={css(
+                    "display:block;width:100%;height:100%;object-fit:cover;opacity:.92"
+                  )}
+                />
+                <span
+                  style={css(
+                    "position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#7b2ff7,#ec4899);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(236,72,153,.5)"
+                  )}
+                >
+                  <span
+                    style={css(
+                      "display:block;width:0;height:0;border-style:solid;border-width:13px 0 13px 22px;border-color:transparent transparent transparent #ffffff;margin-left:5px"
+                    )}
+                  ></span>
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </section>

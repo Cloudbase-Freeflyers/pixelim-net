@@ -8,6 +8,7 @@ export type Faq = { q: string; a: string };
 export type Product = {
   slug: "acrylic-photo-prints" | "canvas-prints" | "aluminium-prints";
   active: ActivePage;
+  video: string;
   hero: {
     img: string;
     alt: string;
@@ -79,6 +80,7 @@ const FAQ_TAX: Faq = {
 export const ACRYLIC: Product = {
   slug: "acrylic-photo-prints",
   active: "acrylic",
+  video: "ohudNLqLScw",
   hero: {
     img: "/images/hero-dark-glow.webp",
     alt: "Glowing acrylic glass print in a dark modern room",
@@ -131,6 +133,7 @@ export const ACRYLIC: Product = {
 export const CANVAS: Product = {
   slug: "canvas-prints",
   active: "canvas",
+  video: "IZO1Q29Pykk",
   hero: {
     img: "/images/canvas-hero-dark.webp",
     alt: "Glowing canvas print in a dark modern room",
@@ -186,6 +189,7 @@ export const CANVAS: Product = {
 export const ALUMINIUM: Product = {
   slug: "aluminium-prints",
   active: "aluminium",
+  video: "THnYrXLpf1w",
   hero: {
     img: "/images/aluminum-hero-dark.webp",
     alt: "Glowing aluminium print in a dark modern room",
