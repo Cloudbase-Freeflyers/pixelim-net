@@ -39,7 +39,7 @@ export default function ProductPage({ product }: { product: Product }) {
       {/* Hero */}
       <section
         style={css(
-          "position:relative;padding:132px 20px 96px;background:radial-gradient(120% 90% at 80% 0%,#4c1d95 0%,rgba(76,29,149,0) 55%),radial-gradient(90% 70% at 10% 20%,#831843 0%,rgba(131,24,67,0) 60%),#0d0d1a"
+          "position:relative;padding:168px 20px 96px;background:radial-gradient(120% 90% at 80% 0%,#4c1d95 0%,rgba(76,29,149,0) 55%),radial-gradient(90% 70% at 10% 20%,#831843 0%,rgba(131,24,67,0) 60%),#0d0d1a"
         )}
       >
         <div

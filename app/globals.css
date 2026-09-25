@@ -61,6 +61,22 @@ a:hover {
   transform: translateY(-2px);
 }
 
+/* Green "all systems go" dot in the top status banner. */
+.status-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.22);
+  animation: pixelim-pulse 2s ease-in-out infinite;
+}
+@keyframes pixelim-pulse {
+  50% {
+    box-shadow: 0 0 0 6px rgba(163, 230, 53, 0.08);
+  }
+}
+
 /* Simple one-time fade-up on load. No JS/observer, so a section can never get
    stuck hidden — the animation always resolves to the visible end state. */
 @keyframes pixelim-fade-up {
@@ -80,6 +96,9 @@ a:hover {
 @media (prefers-reduced-motion: reduce) {
   .page-anim section,
   .page-anim footer {
+    animation: none;
+  }
+  .status-dot {
     animation: none;
   }
 }

@@ -53,7 +53,7 @@ export default function Home() {
       {/* Hero */}
       <section
         style={css(
-          "position:relative;padding:140px 20px 104px;background:radial-gradient(110% 90% at 20% 0%,#4c1d95 0%,rgba(76,29,149,0) 58%),radial-gradient(90% 80% at 90% 30%,#831843 0%,rgba(131,24,67,0) 62%),#0d0d1a"
+          "position:relative;padding:176px 20px 104px;background:radial-gradient(110% 90% at 20% 0%,#4c1d95 0%,rgba(76,29,149,0) 58%),radial-gradient(90% 80% at 90% 30%,#831843 0%,rgba(131,24,67,0) 62%),#0d0d1a"
         )}
       >
         <div

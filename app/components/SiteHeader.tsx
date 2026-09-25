@@ -38,6 +38,20 @@ export default function SiteHeader({
     >
       <div
         style={css(
+          "background:#000;color:#fff;font-size:13px;font-weight:500;line-height:1.3"
+        )}
+      >
+        <div
+          style={css(
+            "max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center"
+          )}
+        >
+          <span className="status-dot" aria-hidden="true" />
+          <span>Fully operational. Shipping worldwide, on schedule.</span>
+        </div>
+      </div>
+      <div
+        style={css(
           "max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px"
         )}
       >
